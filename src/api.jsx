@@ -10,9 +10,8 @@ const today = dayjs().format('YYYY-MM-DD');
 const lastYear = dayjs().subtract(1, 'year').format('YYYY'); 
 const nextYear = dayjs().add(1, 'year').format('YYYY');
 
-//popular games 
+//query string for popular games 
 const popular_games = `games? dates= ${lastYear},${today}&ordering=-rating&page_size=10`;
 
-//popular games url
-const popularGamesUrl = `${base_url}${popular_games}`
-console.log(popularGamesUrl())
+//popular games full url
+export const popularGamesUrl = `${base_url}${popular_games}`
