@@ -1,14 +1,18 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-import { popularGamesUrl } from "../api";
+import { popularGamesUrl, upcomingGamesUrl, newGamesUrl } from "../api";
 
 //fetch game data 
 export const fetchGames = createAsyncThunk('games/fetchGames', async () =>{
     const popularGameData = await axios.get(popularGamesUrl());
+    const upcomingGamesData = await axios.get(upcomingGamesUrl());
+    const neeGamesData = await axios.get(newGamesUrl())
 
     return{
         popular : popularGameData.data.results,
+        upcoming: upcomingGamesData.data.results,
+        newGames : neeGamesData.data.results
     }
 })
 
@@ -16,6 +20,8 @@ const gameSlice = createSlice({
     name : 'games',
     initialState :{
         popular : [],
+        upcoming :[],
+        newGames : [],
         status: 'idle',
     error: null,
     },
@@ -27,6 +33,8 @@ const gameSlice = createSlice({
         .addCase(fetchGames.fulfilled, (state,action) => {
             state.status ='succeeded';
             state.popular = action.payload.popular;
+            state.upcoming = action.payload.upcoming;
+            state.newGames =action.payload.new;
         })
         .addCase(fetchGames.rejected, (state, action) => {
             state.status = 'failed';
