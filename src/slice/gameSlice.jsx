@@ -7,12 +7,12 @@ import { popularGamesUrl, upcomingGamesUrl, newGamesUrl } from "../api";
 export const fetchGames = createAsyncThunk('games/fetchGames', async () =>{
     const popularGameData = await axios.get(popularGamesUrl());
     const upcomingGamesData = await axios.get(upcomingGamesUrl());
-    const neeGamesData = await axios.get(newGamesUrl())
+    const newGamesData = await axios.get(newGamesUrl())
 
     return{
         popular : popularGameData.data.results,
         upcoming: upcomingGamesData.data.results,
-        newGames : neeGamesData.data.results
+        newGames : newGamesData.data.results
     }
 })
 
@@ -34,7 +34,7 @@ const gameSlice = createSlice({
             state.status ='succeeded';
             state.popular = action.payload.popular;
             state.upcoming = action.payload.upcoming;
-            state.newGames =action.payload.new;
+            state.newGames =action.payload.newGames;
         })
         .addCase(fetchGames.rejected, (state, action) => {
             state.status = 'failed';

@@ -6,18 +6,21 @@ const Game = ({name,image, released}) =>{
     return(
         <StyledGame>
          <img src={image} alt={name}></img>
-         <h1>{name}</h1>
+         <h2>{name}</h2>
          <p>released : {released}</p>
         </StyledGame>
     )
 }
 
 const StyledGame= styled(motion.div)`
-  min-height: 30vh;
+  min-height: 20vh;
   box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.2);
   border-radius: 1rem;
   cursor: pointer;
   overflow: hidden;
+  padding: 1rem;
+  background-color: #1e102b;
+  border: 1px solid #803998  ;
 
 img{
         width: 100%;

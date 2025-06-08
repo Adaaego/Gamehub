@@ -12,8 +12,8 @@ const nextYear = dayjs().add(1, 'year').format('YYYY');
 
 //query string for popular games 
 const popular_games = `games?key=${API_KEY}&dates=${lastYear},${today}&ordering=-rating&page_size=20`;
-const upcoming_games = `games?key=${API_KEY}&dates=${today},${nextYear}&ordering=-added&page_size=10`;
-const new_games =`games?key=${API_KEY}&dates=${lastYear},${today}&ordering=-released&page_size=10`;
+const upcoming_games = `games?key=${API_KEY}&dates=${today},${nextYear}&ordering=-added&page_size=20`;
+const new_games =`games?key=${API_KEY}&dates=${lastYear},${today}&ordering=-released&page_size=20`;
 
 //popular games full url
 export const popularGamesUrl = () => `${base_url}${popular_games}`;
