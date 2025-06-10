@@ -23,7 +23,7 @@ const gameSlice = createSlice({
         upcoming :[],
         newGames : [],
         status: 'idle',
-    error: null,
+        error: null,
     },
     reducers:{},
     extraReducers: (builder) =>{
