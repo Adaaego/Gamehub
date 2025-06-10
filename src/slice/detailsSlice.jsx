@@ -3,7 +3,7 @@ import axios from "axios";
 import { gameDetailsURL, gameScreenshotURL} from "../api";
 
 //fetch game details
-const fetchDetails = createAsyncThunk('details/fetchDetails', async (id) =>{
+export const fetchDetails = createAsyncThunk('details/fetchDetails', async (id) =>{
     const gameDetailsData = await axios.get(gameDetailsURL());
     const screenshotData = await axios.get(gameScreenshotURL());
 

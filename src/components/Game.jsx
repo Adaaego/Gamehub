@@ -1,10 +1,19 @@
 //styling and animations 
 import styled from "styled-components";
+import { useEffect } from "react";
 import { motion } from "framer-motion";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchDetails } from "../slice/detailsSlice";
 
-const Game = ({name,image, released}) =>{
+const Game = ({name,image, released, id}) =>{
+ const dispatch = useDispatch();
+ const {details} = useSelector((state) => state.details);
+
+const loadDetailsHandler = () =>{
+    dispatch(fetchDetails(id))
+}
     return(
-        <StyledGame>
+        <StyledGame onClick={loadDetailsHandler}>
          <img src={image} alt={name}></img>
          <h2>{name}</h2>
          <p>released : {released}</p>
